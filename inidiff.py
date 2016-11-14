@@ -28,16 +28,20 @@ p2.parse()
 for section in s1.keys():
   try:
     sp2 = s2[section]
-    print('[%s]' % section)
+    out = []
     for key in s1[section].keys():
       try:
         vp1 = s1[section][key]
         vp2 = s2[section][key]
         if (vp1 !=  vp2 ):
-          print('-%s = %s' % (key, vp1))
-          print('+%s = %s' % (key, vp2))
+          out.append('-%s = %s' % (key, vp1))
+          out.append('+%s = %s' % (key, vp2))
       except KeyError:
-        print('-%s = %s' % (key, vp1))
+        out.append('-%s = %s' % (key, vp1))
+    if len(out) != 0:
+      print('[%s]' % section)
+      for line in out:
+        print(line)
   except KeyError:
     print('-[%s]' % section)
   print('')
