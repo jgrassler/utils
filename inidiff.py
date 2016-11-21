@@ -31,8 +31,8 @@ for section in s1.keys():
     out = []
     for key in s1[section].keys():
       try:
-        vp1 = s1[section][key]
-        vp2 = s2[section][key]
+        vp1 = s1[section][key][0]
+        vp2 = s2[section][key][0]
         if (vp1 !=  vp2 ):
           out.append('-%s = %s' % (key, vp1))
           out.append('+%s = %s' % (key, vp2))
@@ -42,6 +42,7 @@ for section in s1.keys():
       print('[%s]' % section)
       for line in out:
         print(line)
+      print('')
   except KeyError:
     print('-[%s]' % section)
-  print('')
+    print('')
